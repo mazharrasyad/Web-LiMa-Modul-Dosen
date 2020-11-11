@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
         // Table users
         DB::table('users')->insert([
         [ // Admin 1
-            'id' => 1,
+            // 'id' => 1,
             'nama' => 'Admin 1',
             'role' => 'Administrator',
             'username' => 'admin1',
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ],[ // Admin 2
-            'id' => 2,
+            // 'id' => 2,
             'nama' => 'Admin 2',
             'role' => 'Administrator',
             'username' => 'admin2',
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ],[ // Dosen 1
-            'id' => 3,
+            // 'id' => 3,
             'nama' => 'Dosen 1',
             'role' => 'Dosen',
             'username' => 'dosen1',
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ],[ // Dosen 2
-            'id' => 4,
+            // 'id' => 4,
             'nama' => 'Dosen 2',
             'role' => 'Dosen',
             'username' => 'dosen2',
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ],[ // Scrum Master 1
-            'id' => 5,
+            // 'id' => 5,
             'nama' => 'Scrum Master 1',
             'role' => 'Scrum Master',
             'username' => 'scrummaster1',
@@ -80,7 +80,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ],[ // Scrum Master 2
-            'id' => 6,
+            // 'id' => 6,
             'nama' => 'Scrum Master 2',
             'role' => 'Scrum Master',
             'username' => 'scrummaster2',
@@ -93,7 +93,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ],[ // Product Owner 1
-            'id' => 7,
+            // 'id' => 7,
             'nama' => 'Product Owner 1',
             'role' => 'Product Owner',
             'username' => 'productowner1',
@@ -106,7 +106,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'), 
         ],[ // Product Owner 2
-            'id' => 8,
+            // 'id' => 8,
             'nama' => 'Product Owner 2',
             'role' => 'Product Owner',
             'username' => 'productowner2',
@@ -119,7 +119,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ],[ // Mahasiswa 1
-            'id' => 9,
+            // 'id' => 9,
             'nama' => 'Mahasiswa 1',
             'role' => 'Mahasiswa',
             'username' => 'mahasiswa1',
@@ -132,7 +132,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ],[ // Mahasiswa 2
-            'id' => 10,
+            // 'id' => 10,
             'nama' => 'Mahasiswa 2',
             'role' => 'Mahasiswa',
             'username' => 'mahasiswa2',

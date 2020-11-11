@@ -19,6 +19,10 @@ class ProjectController extends Controller
 
     public function store(Request $request){    
         $this->_validation($request);
+        $request['tanggal_akhir'] = str_split(str_replace(' - ', '', $request['tanggal_mulai']), 10)[1];
+        $request['tanggal_mulai'] = str_split(str_replace(' - ', '', $request['tanggal_mulai']), 10)[0];
+        $request['budget'] = (float) str_replace(',', '', $request['budget']);
+        $request['product_owner_id'] = 7;        
         Project::create($request->all());
         return redirect()->route('project.index')->with('message', 'Project baru berhasil direquest');
     }
@@ -52,13 +56,13 @@ class ProjectController extends Controller
             'nama' => 'required',
             'deskripsi' => 'required',
             'tanggal_mulai' => 'required',
-            'tanggal_akhir' => 'required',
+            // 'tanggal_akhir' => 'required',
             'budget' => 'required',
         ],[
             'nama.required' => 'Field ini harus diisi',
             'deskripsi.required' => 'Field ini harus diisi',
             'tanggal_mulai.required' => 'Field ini harus diisi',
-            'tanggal_akhir.required' => 'Field ini harus diisi',
+            // 'tanggal_akhir.required' => 'Field ini harus diisi',
             'budget.required' => 'Field ini harus diisi',
         ]);
     }

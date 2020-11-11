@@ -64,18 +64,28 @@
                         <td>{{ $projects->firstItem()+$no }}</td>
                         <td>{{ $project->nama }}</td>                        
                         <td class="align-middle">
-                            <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
-                                <div class="progress-bar bg-success" data-width="{{ $project->persen }}%"></div>
+                            <div class="progress" data-height="4" data-toggle="tooltip" title="{{ $project->persen }}%">
+                                <div class="progress-bar
+                                    @if (0 <= $project->persen and $project->persen < 33)
+                                        bg-danger
+                                    @elseif (33 <= $project->persen and $project->persen < 66)
+                                        bg-warning
+                                    @else
+                                        bg-success
+                                    @endif"
+                                    data-width="{{ $project->persen }}%"></div>
                             </div>
                         </td>
-                        <td>
-                            @if ($project->status == 'Belum')
-                                <div class="badge badge-danger">{{ $project->status }}</div>
-                            @elseif ($project->status == 'Proses') 
-                                <div class="badge badge-warning">{{ $project->status }}</div>
-                            @else 
-                                <div class="badge badge-success">{{ $project->status }}</div>
-                            @endif                            
+                        <td>                            
+                            <div class="badge                                                                                                                     
+                                @if ($project->status == 'Belum')
+                                    badge-danger
+                                @elseif ($project->status == 'Proses') 
+                                    badge-warning
+                                @else 
+                                    badge-success
+                                @endif">                            
+                            {{ $project->status }}</div>
                         </td>
                         <td>
                             <a href="#">Lihat</a>

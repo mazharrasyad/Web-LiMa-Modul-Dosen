@@ -9,8 +9,8 @@
 
     <ul class="sidebar-menu">
     <li class="menu-header">Modul Dosen</li>
-        <li><a class="nav-link" href="{{ route('beranda') }}"><i class="fas fa-home"></i> <span>Beranda</span></a></li>
-        <li><a class="nav-link" href="{{ route('project.index') }}"><i class="fas fa-briefcase"></i> <span>Project</span></a></li>
-        <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Tim</span></a></li>        
+        <li class="{{ Request::is('/*') ? 'active' : ''}}"><a class="nav-link" href="{{ route('beranda') }}"><i class="fas fa-home"></i> <span>Beranda</span></a></li>
+        <li class="{{ Request::is('project*') ? 'active' : ''}}"><a class="nav-link" href="{{ route('project.index') }}"><i class="fas fa-briefcase"></i> <span>Project</span></a></li>
+        <li class="{{ Request::is('tim') ? 'active' : ''}}"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Tim</span></a></li>        
 </aside>
 </div>

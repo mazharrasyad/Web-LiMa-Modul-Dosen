@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Beranda')
+@section('title', 'Project')
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">    
 @endpush
@@ -88,16 +88,16 @@
                             {{ $project->status }}</div>
                         </td>
                         <td>
-                            <a href="#">Lihat</a>
+                            <a href="{{ route('project.show', $project->id) }}">Detail</a>
                             <div class="bullet"></div>
-                            <a href="{{ route('project.edit', $project->id) }}">Ubah</a>
+                            <a href="{{ route('project.edit', $project->id) }}">Update</a>
                             <div class="bullet"></div>
                             <a href="#" data-id="{{ $project->id }}" class="text-danger swal-confirm" style="position: absolute;">
                                 <form action="{{ route('project.destroy', $project->id) }}" id="delete{{ $project->id }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 </form>
-                                Hapus
+                                Delete
                             </a>
                         </td> 
                     </tr>

@@ -20,6 +20,7 @@ class CreateSprintTable extends Migration
             $table->foreign('project_id')->references('id')->on('project');             
             $table->date('tanggal_mulai');
             $table->date('tanggal_akhir');
+            $table->enum('status', ['Belum', 'Proses', 'Selesai'])->default('Belum');
             $table->timestamps();
         });
     }

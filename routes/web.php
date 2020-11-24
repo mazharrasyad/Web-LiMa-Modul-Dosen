@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function () { return view('index'); })->name('beranda');
-    Route::resource('project', 'ProjectController');
+Route::group(['middleware' => 'revalidate'], function()
+{
+    Auth::routes();
+    // Route::get('/home', 'HomeController@index')->name('home');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/', function () { return view('index'); })->name('dashboard');
+        Route::resource('user', 'UserController');
+        Route::resource('team', 'TeamController');
+        Route::resource('project', 'ProjectController');
+    });
 });

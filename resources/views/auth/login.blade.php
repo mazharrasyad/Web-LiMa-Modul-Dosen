@@ -38,7 +38,9 @@
 
             <div class="card card-primary">
               <div class="card-header">
-                <h4>Login</h4>                
+                <div class="col-12 text-center">
+                  <h4>Login Link-Match STT-NF</h4>                
+                </div>                
               </div>
 
               @if (session('message'))

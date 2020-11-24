@@ -10,27 +10,13 @@ class Project extends Model
 
     protected $guarded = [];
 
-    // protected $fillable = [
-    //     'nama', 'deskripsi', 'username', 'password', 'email', 'foto', 'no_hp', 'fingerprint_pin', 'remember_token',
-    // ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'product_owner_id');
+    }
 
-    // public function semester()
-    // {
-    //     return $this->belongsTo(Semester::class);
-    // }
-
-    // public function scrummaster()
-    // {
-    //     return $this->belongsTo(Scrummaster::class);
-    // }
-
-    // public function tim()
-    // {
-    //     return $this->belongsTo(Tim::class);
-    // }
-
-    // public function mvps()
-    // {
-    //     return $this->hasMany(Mvp::class, 'project_id', 'id');        
-    // }
+    public function sprints()
+    {
+        return $this->hasMany(Sprint::class, 'project_id', 'id');        
+    }
 }

@@ -1,14 +1,39 @@
 @extends('layouts.master')
-@section('title', 'Request Project Baru')
+@section('title', 'Update Jumlah Sprint Project')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/fullcalendar/fullcalendar.min.css') }}">
 @endpush
 @push('js')
-    <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-    <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
+    <script src="{{ asset('assets/modules/fullcalendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/cleave-js/dist/cleave.min.js') }}"></script>
+    <script>
+      var cleaveC = new Cleave('.currency', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+      });
+    </script>    
+    <script>
+      $("#myEvent").fullCalendar({
+        height: 'auto',
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month',
+        },
+        editable: true,
+        defaultDate: {!! str_replace("'", "\'", json_encode($project->tanggal_mulai)) !!},
+        events: [          
+          {
+            title: {!! str_replace("'", "\'", json_encode($project->nama)) !!},
+            start: {!! str_replace("'", "\'", json_encode($project->tanggal_mulai)) !!},
+            end: {!! str_replace("'", "\'", json_encode($project->tanggal_akhir)) !!},
+            backgroundColor: "#007bff",
+            borderColor: "#007bff",
+            textColor: '#fff'
+          },
+        ]        
+      });
+    </script>
 @endpush
 @section('content')
     <!-- Main Content -->
@@ -18,13 +43,13 @@
             <div class="section-header-back">
               <a href="{{ url()->previous() }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Ubah Project - {{ $project->nama }}</h1>
+            <h1>Update Project : {{ $project->nama }}</h1>
           </div>
 
           <div class="section-body">
             <h2 class="section-title"></h2>
             <p class="section-lead">
-              Silahkan ubah field yang ingin diperbaharui
+              Silahkan update jumlah sprint pada project
             </p>
 
             <div class="row">
@@ -34,65 +59,41 @@
                   @csrf
                   @method('patch')
                   <div class="card-body">
+
                     <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama</label>
-                      <div class="col-sm-12 col-md-7">                       
-                        <input type="text" class="form-control" name="nama" value="{{ $project->nama }}">
-                        <label @error('nama') class="text-danger" @enderror>
-                          @error('nama') *{{ $message }} @enderror
-                        </label>
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>                      
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jumlah Sprint</label>                      
                       <div class="col-sm-12 col-md-7">
-                        <textarea class="form-control" name="deskripsi">{{ $project->deskripsi }}</textarea>                      
-                        <label @error('deskripsi') class="text-danger" @enderror>
-                          @error('deskripsi') *{{ $message }} @enderror
-                        </label>
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal Mulai</label>                      
-                      <div class="col-sm-12 col-md-7">
-                        <input type="date" class="form-control" name="tanggal_mulai" value="{{ $project->tanggal_mulai }}">                      
-                        <label @error('tanggal_mulai') class="text-danger" @enderror>
-                          @error('tanggal_mulai') *{{ $message }} @enderror
-                        </label>
-                      </div>                      
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal Akhir</label>                      
-                      <div class="col-sm-12 col-md-7">
-                        <input type="date" class="form-control" name="tanggal_akhir" value="{{ $project->tanggal_akhir }}">
-                        <label @error('tanggal_akhir') class="text-danger" @enderror>
-                          @error('tanggal_akhir') *{{ $message }} @enderror
-                        </label>
-                      </div>                      
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Budget</label>                      
-                      <div class="col-sm-12 col-md-7">
-                        <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Rp</span>
+                        <div class="input-group">
+                          <input type="text" class="form-control currency" name="jumlah_sprint" value="{{ $project->jumlah_sprint }}">             
                         </div>
-                        <input type="number" class="form-control" name="budget" value="{{ $project->budget }}">
-                        <div class="input-group-append">
-                          <span class="input-group-text">,00</span>
-                        </div>                        
-                      </div>
-                      <label @error('budget') class="text-danger" @enderror>
-                        @error('budget') *{{ $message }} @enderror
-                      </label>
-                      </div>                      
+                        <label @error('jumlah_sprint') class="text-danger" @enderror>
+                          @error('jumlah_sprint') *{{ $message }} @enderror
+                        </label>
+                      </div>                                              
                     </div>
+
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                       <div class="col-sm-12 col-md-7">
-                        <button class="btn btn-primary">Ubah</button>
+                        <button class="btn btn-primary">Submit</button>
                       </div>
                     </div>
+
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h4>Tanggal Pengerjaan : {{ \Carbon\Carbon::parse($project->tanggal_mulai)->translatedformat('l, d F Y') }} s.d. {{ \Carbon\Carbon::parse($project->tanggal_akhir)->translatedformat('l, d F Y') }}</h4>
+                          </div>
+                          <div class="card-body">
+                            <div class="fc-overflow">                            
+                              <div id="myEvent"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                   </form>
                 </div>

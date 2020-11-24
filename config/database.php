@@ -64,6 +64,13 @@ return [
         ],
 
         'pgsql' => [
+            // Localhost
+            // DB_CONNECTION=pgsql
+            // DB_HOST=127.0.0.1
+            // DB_PORT=5432
+            // DB_DATABASE=lima_modul_dosen
+            // DB_USERNAME=postgres
+            // DB_PASSWORD=postgres
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -76,6 +83,13 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
+            // Hosting
+            // DB_CONNECTION=pgsql
+            // DB_HOST=ec2-34-234-185-150.compute-1.amazonaws.com
+            // DB_PORT=5432
+            // DB_DATABASE=danjhgfts68f8r
+            // DB_USERNAME=qrhljtexgggsxk
+            // DB_PASSWORD=53f6b2bd56c79ef76a15047e7040a318991410f52927a61c3aea339f2c20454d
         ],
 
         'sqlsrv' => [

@@ -22,5 +22,6 @@ Route::group(['middleware' => 'revalidate'], function()
         Route::resource('user', 'UserController');
         Route::resource('team', 'TeamController');
         Route::resource('project', 'ProjectController');
+        Route::get('project/create', 'ProjectController@create')->middleware('can:isProductOwner')->name('project.create');
     });
 });

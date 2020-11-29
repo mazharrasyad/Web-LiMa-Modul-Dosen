@@ -1,0 +1,1 @@
+cd c:\xampp\htdocs\Web-LiMa-Modul-Dosen && php artisan schedule:run >> riwayat.txt 2>&1

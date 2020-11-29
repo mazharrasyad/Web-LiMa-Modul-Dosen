@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('sprint:update')->everyMinute();
+        $schedule->command('sprint:update')->daily();
     }
 
     /**

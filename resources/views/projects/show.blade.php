@@ -90,7 +90,13 @@
                       <div class="media-icon"><i class="fas fa-tasks"></i></div>
                       <div class="media-body">
                         <h6>Jumlah Sprint</h6>
-                        <p>{{ $project->jumlah_sprint }} Sprint</p>
+                        @if ($project->jumlah_sprint != 0)
+                            <p>{{ $project->jumlah_sprint }} Sprint</p>
+                        @else
+                            <a href="{{ route('project.edit', $project->id) }}">
+                                <p>{{ $project->jumlah_sprint }} Sprint</p>
+                            </a>
+                        @endif
                       </div>
                     </div>
 
@@ -109,13 +115,13 @@
 
           </div>
 
-          <h2 class="section-title">Tim : 
+          <h2 class="section-title">Tim :
             @if (1 == 2)
               Nama Tim
             @else
               <a href="#" data-toggle="tooltip" title="Klik, untuk memilih tim">
                 Belum Ada
-              </a>              
+              </a>
             @endif
           </h2>
           <div class="row">
@@ -141,7 +147,7 @@
                             <div class="user-cta">
                               <button class="btn btn-primary follow-btn">Detail</button>
                             </div>
-                          </div>  
+                          </div>
                         </div>
                       </div>
 
@@ -154,10 +160,10 @@
                             <div class="user-cta">
                               <button class="btn btn-primary follow-btn">Detail</button>
                             </div>
-                          </div>  
+                          </div>
                         </div>
                       </div>
-                    {{-- @endforeach --}}                   
+                    {{-- @endforeach --}}
 
                   </div>
                 </div>
@@ -179,11 +185,11 @@
                       bg-warning
                   @else
                       bg-success
-                  @endif" 
+                  @endif"
                   data-width="{{ $project->persen }}%" >{{ $project->persen }}%</div>
                   </div>
                 </div>
-              </div>              
+              </div>
 
               <div class="activities">
 
@@ -191,12 +197,12 @@
                   <div class="activity">
                     <div class="activity-icon bg-primary text-white shadow-primary">
                       @if ($sprint->status == 'Selesai')
-                        <i class="fas fa-check"></i>                        
+                        <i class="fas fa-check"></i>
                       @elseif ($sprint->status == 'Proses')
                         <i class="fas fa-redo-alt"></i>
                       @else
                         <i class="fas fa-flag"></i>
-                      @endif                      
+                      @endif
                     </div>
                     <div class="activity-detail">
                       <div class="mb-2">
@@ -208,7 +214,7 @@
                           <span class="badge badge-warning">Proses</span>
                         @else
                           <span class="badge badge-danger">Belum</span>
-                        @endif  
+                        @endif
                         <div class="float-right">
                           <a href="" data-toggle="tooltip" title="Proses Modul Mahasiswa"><i class="far fa-edit"></i></a>
                         </div>
@@ -216,7 +222,7 @@
                       <p>{{ \Carbon\Carbon::parse($sprint->tanggal_mulai)->translatedformat('l, d F Y') }} s.d. {{ \Carbon\Carbon::parse($sprint->tanggal_akhir)->translatedformat('l, d F Y') }}</p>
                     </div>
                   </div>
-                @endforeach                  
+                @endforeach
 
                 </div>
               </div>

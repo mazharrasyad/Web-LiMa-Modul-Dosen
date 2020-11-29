@@ -1,13 +1,13 @@
 @extends('layouts.master')
 @section('title', 'Project')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">    
+    <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
 @endpush
 @push('js')
     <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
     <script src="{{ asset('assets/js/page/features-posts.js') }}"></script>
     <script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
-    <script> 
+    <script>
         $(".swal-confirm").click(function(e) {
         id = e.target.dataset.id;
         swal({
@@ -43,7 +43,9 @@
                 <div class="card-body">
                     <div class="float-left">
                         <div class="section-header-button">
-                            <a href="{{ route('project.create') }}" class="btn btn-primary">Request Project Baru</a>
+                            @can('isProductOwner')
+                                <a href="{{ route('project.create') }}" class="btn btn-primary">Request Project Baru</a>
+                            @endcan
                         </div>
                       </div>
                 <div class="clearfix mb-3"></div>
@@ -62,7 +64,7 @@
                     @foreach ($projects as $no => $project)
                     <tr>
                         <td>{{ $projects->firstItem()+$no }}</td>
-                        <td>{{ $project->nama }}</td>                        
+                        <td>{{ $project->nama }}</td>
                         <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="{{ $project->persen }}%">
                                 <div class="progress-bar
@@ -76,32 +78,36 @@
                                     data-width="{{ $project->persen }}%"></div>
                             </div>
                         </td>
-                        <td>                            
-                            <div class="badge                                                                                                                     
+                        <td>
+                            <div class="badge
                                 @if ($project->status == 'Belum')
                                     badge-danger
-                                @elseif ($project->status == 'Proses') 
+                                @elseif ($project->status == 'Proses')
                                     badge-warning
-                                @else 
+                                @else
                                     badge-success
-                                @endif">                            
+                                @endif">
                             {{ $project->status }}</div>
                         </td>
                         <td>
                             <a href="{{ route('project.show', $project->id) }}">Detail</a>
-                            <div class="bullet"></div>
-                            <a href="{{ route('project.edit', $project->id) }}">Update</a>
-                            <div class="bullet"></div>
-                            <a href="#" data-id="{{ $project->id }}" class="text-danger swal-confirm" style="position: absolute;">
-                                <form action="{{ route('project.destroy', $project->id) }}" id="delete{{ $project->id }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                </form>
-                                Delete
-                            </a>
-                        </td> 
+
+                            @can('isAdministrator')
+                                <div class="bullet"></div>
+                                <a href="{{ route('project.edit', $project->id) }}">Update</a>
+
+                                <div class="bullet"></div>
+                                <a href="#" data-id="{{ $project->id }}" class="text-danger swal-confirm" style="position: absolute;">
+                                    <form action="{{ route('project.destroy', $project->id) }}" id="delete{{ $project->id }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    </form>
+                                    Delete
+                                </a>
+                            @endcan
+                        </td>
                     </tr>
-                    @endforeach                    
+                    @endforeach
                     </table>
                     <div class="card-footer text-right">
                     <nav class="d-inline-block">

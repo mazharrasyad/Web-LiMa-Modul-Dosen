@@ -1,14 +1,14 @@
 @extends('errors.error')
-@section('title', '500 Error')
+@section('title', '403 Error')
 @section('content')
 <div id="app">
 <section class="section">
     <div class="container mt-5">
     <div class="page-error">
         <div class="page-inner">
-        <h1>500</h1>
+        <h1>403</h1>
         <div class="page-description">
-            Terjadi kesalahan harap coba kembali
+            Maaf, Anda tidak bisa mengakses halaman ini
         </div>
         <div class="page-search">
             <div class="mt-3">

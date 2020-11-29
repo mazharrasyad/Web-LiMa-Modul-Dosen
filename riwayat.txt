@@ -1,0 +1,8 @@
+Running scheduled command: "C:\xampp\php\php.exe" "artisan" sprint:update > "NUL" 2>&1
+Running scheduled command: "C:\xampp\php\php.exe" "artisan" sprint:update > "NUL" 2>&1
+Running scheduled command: "C:\xampp\php\php.exe" "artisan" sprint:update > "NUL" 2>&1
+Running scheduled command: "C:\xampp\php\php.exe" "artisan" sprint:update > "NUL" 2>&1
+Running scheduled command: "C:\xampp\php\php.exe" "artisan" sprint:update > "NUL" 2>&1
+Running scheduled command: "C:\xampp\php\php.exe" "artisan" sprint:update > "NUL" 2>&1
+Running scheduled command: "C:\xampp\php\php.exe" "artisan" sprint:update > "NUL" 2>&1
+^CRunning scheduled command: "C:\xampp\php\php.exe" "artisan" sprint:update > "NUL" 2>&1
